@@ -1,6 +1,6 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
-
+syntax on
 if has("autocmd")
     au VimEnter,InsertLeave * silent execute '!echo -ne "\e[1 q"' | redraw!
       au InsertEnter,InsertChange *
@@ -12,7 +12,11 @@ if has("autocmd")
         au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
       endif
 
+" default the statusline to green when entering Vim
+  hi statusline guibg=green
+
 " set the runtime path to include Vundle and initialize
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
@@ -28,25 +32,24 @@ Plugin 'tpope/vim-fugitive'
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
 " Git plugin not hosted on GitHub
-Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'tpope/vim-rails'
+Plugin 'vim-airline/vim-airline'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-commentary'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'dyng/ctrlsf.vim'
 Plugin 'pangloss/vim-javascript'
+Plugin 'w0rp/ale'
 Plugin 'mxw/vim-jsx'
 Plugin 'mattn/emmet-vim'
-  let g:user_emmet_leader_key='<Tab>'
+Plugin 'tpope/vim-cucumber'
   let g:user_emmet_settings = {
     \  'javascript.jsx' : {
       \      'extends' : 'jsx',
       \  },
     \}
-Plugin 'w0rp/ale'
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}
