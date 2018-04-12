@@ -1,6 +1,7 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 syntax on
+set autoindent
 if has("autocmd")
     au VimEnter,InsertLeave * silent execute '!echo -ne "\e[1 q"' | redraw!
       au InsertEnter,InsertChange *
@@ -21,30 +22,40 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
+" system plugins
+" 
+Plugin 'ervandew/supertab'
+Plugin 'prettier/vim-prettier', {'do': 'yarn install'}
 Plugin 'VundleVim/Vundle.vim'
-
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-" Git plugin not hosted on GitHub
-Plugin 'tpope/vim-rails'
-Plugin 'vim-airline/vim-airline'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-commentary'
-Plugin 'thoughtbot/vim-rspec'
 Plugin 'dyng/ctrlsf.vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'w0rp/ale'
-Plugin 'mxw/vim-jsx'
-Plugin 'mattn/emmet-vim'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'vim-airline/vim-airline'
+Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+" Coding Plugins
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-surround'
+
+"Syntax Plugins
+""Ruby/Rails
+Plugin 'tpope/vim-rails'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'slim-template/vim-slim'
 Plugin 'tpope/vim-cucumber'
+Plugin 'thoughtbot/vim-rspec'
+
+"Java Script
+Plugin 'pangloss/vim-javascript'
+Plugin 'maxmellon/vim-jsx-pretty'
+Plugin 'mattn/emmet-vim'
+Plugin 'valloric/MatchTagAlways'
+Plugin 'w0rp/ale'
+
+
   let g:user_emmet_settings = {
     \  'javascript.jsx' : {
       \      'extends' : 'jsx',
@@ -57,17 +68,9 @@ Plugin 'tpope/vim-cucumber'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-set tabstop=4 softtabstop=0 expandtab shiftwidth=2 smarttab
+set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
 set number
 
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
