@@ -28,7 +28,7 @@ Plugin 'ervandew/supertab'
 Plugin 'prettier/vim-prettier', {'do': 'yarn install'}
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-repeat'
-Plugin 'dyng/ctrlsf.vim'
+Plugin 'rking/ag.vim' " needs to install Ag silver search in order to work
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
