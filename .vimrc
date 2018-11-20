@@ -6,7 +6,6 @@
 if has('vim_starting')
   set nocompatible               " Be iMproved
 endif
-
 let vimplug_exists=expand('~/.vim/autoload/plug.vim')
 
 let g:vim_bootstrap_langs = "html,javascript,ruby"
@@ -31,6 +30,8 @@ call plug#begin(expand('~/.vim/plugged'))
 "*****************************************************************************
 "" Plug install packages
 "*****************************************************************************
+Plug 'sheerun/vim-polyglot'
+Plug 'trevordmiller/nova-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-commentary'
@@ -46,8 +47,8 @@ Plug 'majutsushi/tagbar'
 Plug 'scrooloose/syntastic'
 Plug 'Yggdroot/indentLine'
 Plug 'avelino/vim-bootstrap-updater'
-Plug 'skywind3000/asyncrun.vim'
 Plug 'sheerun/vim-polyglot'
+Plug 'ervandew/supertab'
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 else
@@ -95,11 +96,8 @@ Plug 'mattn/emmet-vim'
 
 " javascript
 "" Javascript Bundle
-"""Plug 'jelera/vim-javascript-syntax'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-
-
 
 " ruby
 Plug 'tpope/vim-rails'
@@ -138,9 +136,9 @@ set ttyfast
 set backspace=indent,eol,start
 
 "" Tabs. May be overriten by autocmd rules
-set tabstop=4
+set tabstop=2
 set softtabstop=0
-set shiftwidth=4
+set shiftwidth=2
 set expandtab
 
 "" Map leader to ,
@@ -177,7 +175,7 @@ let g:session_command_aliases = 1
 "" Visual Settings
 "*****************************************************************************
 syntax on
-set ruler
+" set ruler
 set number
 
 let no_buffers_menu=1
@@ -204,7 +202,6 @@ else
   let g:indentLine_char = '┆'
   let g:indentLine_faster = 1
 
-  
   if $COLORTERM == 'gnome-terminal'
     set term=gnome-256color
   else
@@ -212,14 +209,13 @@ else
       set term=xterm-256color
     endif
   endif
-  
 endif
 
 
 if &term =~ '256color'
   set t_ut=
 endif
-autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
+
 
 "" Disable the blinking cursor.
 set gcr=a:blinkon0
