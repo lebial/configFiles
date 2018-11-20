@@ -76,10 +76,7 @@ endif
 Plug 'honza/vim-snippets'
 
 "" Color
-" Plug 'trevordmiller/nova-vim'
-Plug 'drewtempelmeyer/palenight.vim'
-Plug 'NLKNguyen/papercolor-theme'
-
+Plug 'tomasr/molokai'
 
 "*****************************************************************************
 "" Custom bundles
@@ -182,7 +179,7 @@ set number
 
 let no_buffers_menu=1
 if !exists('g:not_finish_vimplug')
-  colorscheme palenight
+  colorscheme molokai
 endif
 
 set mousemodel=popup
@@ -280,7 +277,7 @@ let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
 let g:NERDTreeWinSize = 50
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 nnoremap <silent> <F2> :NERDTreeFind<CR>
-nnoremap <silent> <leader>` :NERDTreeToggle<CR>
+nnoremap <silent> <F3> :NERDTreeToggle<CR>
 
 " grep.vim
 nnoremap <silent> <leader>f :Rgrep<CR>
