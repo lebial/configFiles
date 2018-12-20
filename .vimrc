@@ -49,6 +49,8 @@ Plug 'Yggdroot/indentLine'
 Plug 'avelino/vim-bootstrap-updater'
 Plug 'sheerun/vim-polyglot'
 Plug 'ervandew/supertab'
+Plug 'prettier/vim-prettier', {'do': 'npm install'}
+
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 else
@@ -251,6 +253,11 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline_skip_empty_sections = 1
 
+" vim-prettier
+
+nmap <leader>p <Plug>(Prettier)
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 "*****************************************************************************
 "" Abbreviations
 "*****************************************************************************
@@ -427,7 +434,7 @@ if has('unnamedplus')
 endif
 
 noremap YY "+y<CR>
-noremap <leader>p "+gP<CR>
+noremap <leader>P "+gP<CR>
 noremap XX "+x<CR>
 
 if has('macunix')
